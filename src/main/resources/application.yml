@@ -1,5 +1,5 @@
 server:
-  port: 8088
+  port: 8080
 
 ---
 spring:
@@ -12,26 +12,26 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: reservation
+        - id: pay
           uri: http://localhost:8081
           predicates:
-            - Path=/reservations/**
-#        - id: notice
-#          uri: http://localhost:8082
-#          predicates:
-#            - Path=//**
-        - id: diagnosis
+            - Path=/pay/**
+        - id: gate
+          uri: http://localhost:8082
+          predicates:
+            - Path=/gate/**
+        - id: space
           uri: http://localhost:8083
           predicates:
-            - Path=/medicalRecords/**
-        - id: lookup
+            - Path=/space/**
+        - id: keeper
           uri: http://localhost:8084
           predicates:
-            - Path=/reservationStats/**
-        - id: acceptance
+            - Path=/keeper/**
+        - id: state
           uri: http://localhost:8085
           predicates:
-            - Path=/financialManagements/**
+            - Path=/state/**
         - id: oauth
           uri: http://localhost:8090
           predicates:
@@ -59,26 +59,26 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: reservation
-          uri: http://reservation:8080
+        - id: pay
+          uri: http://pay:8080
           predicates:
-            - Path=/reservations/**
-#        - id: notice
-#          uri: http://notice:8080
-#          predicates:
-#            - Path=/order/**
-        - id: diagnosis
-          uri: http://diagnosis:8080
+            - Path=/pay/**
+        - id: gate
+          uri: http://gate:8080
           predicates:
-            - Path=/medicalRecords/**
-        - id: lookup
-          uri: http://lookup:8080
+            - Path=/gate/**
+        - id: space
+          uri: http://space:8080
           predicates:
-            - Path=/reservationStats/**
-        - id: acceptance
-          uri: http://acceptance:8080
+            - Path=/space/**
+        - id: keeper
+          uri: http://keeper:8080
           predicates:
-            - Path=/financialManagements/**
+            - Path=/keeper/**
+        - id: state
+          uri: http://state:8080
+          predicates:
+            - Path=/state/**
         - id: oauth
           uri: http://oauth:8080
           predicates:
